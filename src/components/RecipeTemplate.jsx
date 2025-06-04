@@ -10,7 +10,7 @@ const RecipeTemplate = (props) => {
             <h1 className="p-1 mt-3 text-2xl font-black">{title}</h1>
             <small className="p-1 text-red-400">{chef}</small>
             <p className="mt-2 p-1">
-                {desc.slice(0, 100)}...
+                {desc?desc.slice(0,100)+"...":""}
                 <small className="text-blue-400">more</small>
             </p>
           </Link>

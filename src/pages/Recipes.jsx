@@ -1,4 +1,3 @@
-
 import { Link } from "react-router";
 import RecipeTemplate from "../components/RecipeTemplate";
 import {  useRecipe } from "../context/RecipeContext";
@@ -7,7 +6,7 @@ const Recipes = () => {
     const { data } = useRecipe();
 
     const reciperender = data.map((recipe) => (
-        <RecipeCard key={recipe.id} recipe={recipe} />
+        <RecipeTemplate key={recipe.id} recipe={recipe} />
     ));
     return (
         <>
