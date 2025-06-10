@@ -1,14 +1,18 @@
 import React from 'react'
-import { useParams } from 'react-router'
+import { useNavigate, useParams } from 'react-router'
 import { useRecipe } from '../context/RecipeContext';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
 const SingleRecipe = () => {
+  const navigate = useNavigate() 
   const {id} =useParams();
-  const {data ,setData} = useRecipe();
+  const {data ,setData,favroite ,setfavroite} = useRecipe();
   const recipe = data.find((r)=> r.id == id);
+  console.log(favroite.find((r) => r.id == recipe.id));
+
   const {
+
          register,
          handleSubmit, 
          reset ,
@@ -31,7 +35,7 @@ const SingleRecipe = () => {
         const copydata = [...data];
         console.log(data)
         copydata[i] = { ...recipe, ...updatedRecipe };
-
+        localStorage.setItem('recipes',JSON.stringify(copydata))
         setData(copydata);
         
         toast.success("recipe updated!");
@@ -40,7 +44,7 @@ const SingleRecipe = () => {
         }
 
         const DeleteHandler = () =>{
-        
+          
         }
 
   return recipe ? (
@@ -123,7 +127,6 @@ const SingleRecipe = () => {
                     Delete Recipe
                 </button>
             </form>
-            {/*  */}
         </div>
     ) : (
         "Loading"
