@@ -76,8 +76,13 @@ const RecipeContext = (props) => {
       desc: "Creamy North Indian curry made with paneer and rich tomato-based gravy."
     }
   ]);
+
+  const [favroite , setfavroite] = useState(
+    JSON.parse(localStorage.getItem("favroite")) || []
+  )
+
   return (
-    <recipeContext.Provider value={{data ,setData}}>
+    <recipeContext.Provider value={{data ,setData , favroite , setfavroite}}>
       {props.children}
     </recipeContext.Provider>
   )
